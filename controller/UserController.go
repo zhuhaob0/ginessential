@@ -27,7 +27,7 @@ func Register(c *gin.Context) {
 	// 或者使用gin的Bind方法获取参数
 	c.Bind(&requestUser)
 
-	// 获取参数，注释为在postman请求时使用的获取参数的方法
+	// 获取参数，注释为在postman的form-data数据请求时使用的获取参数的方法
 	name := requestUser.Name           // c.PostForm("name")
 	password := requestUser.Password   // c.PostForm("password")
 	telephone := requestUser.Telephone // c.PostForm("telephone")
@@ -79,9 +79,9 @@ func Login(c *gin.Context) {
 	DB := common.GetDB()
 	var requestUser = model.User{}
 	c.Bind(&requestUser)
-	// 获取参数
-	password := requestUser.Password
-	telephone := requestUser.Telephone
+	// 获取参数，注释为在postman的form-data数据请求时使用的获取参数的方法
+	password := requestUser.Password   // c.PostForm("password")
+	telephone := requestUser.Telephone // c.PostForm("telephone")
 
 	// 数据验证
 	if len(telephone) != 11 {
